@@ -1,0 +1,332 @@
+@font-face {
+  font-family: vazirfont;
+  src: url(IRANSans.woff);
+}
+
+body , p , h1 , h2 , h3 , h4 , h5 , h6 , span , a ,#root {
+  font-family: vazirfont !important;
+  
+} 
+#root {
+  width: 100%;
+} 
+
+body {
+  background: #fff;
+}
+
+
+
+/* Style For Login */
+
+
+.login-wave-head {
+  position: relative;
+  height: 500px;
+  background: #002f62;
+  background-image: linear-gradient(155deg,  #51BAA9 0%, #35AEB7 50%, #20A5C4 100%);
+}
+
+
+.login-form-wave-svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
+.login-wave section {
+  margin: 5% 10%;
+}
+
+.login-form {
+  margin-left: 40%;
+  height:200px;
+  margin-top:100px;
+  z-index: 1000;
+  position: absolute;
+  width:300px;
+  min-height:350px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  padding: 10px 20px 0 20px;
+  background: #ffffff30;
+}
+
+.login-form-logo {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-form-logo img {
+  width:70px;
+  height:70px;
+}
+
+#basic {
+  margin-top: 40px;
+}
+
+/* Style For Panel */
+
+.panel-logo {
+  min-height:40px;
+  text-align: center;
+  padding: 10px;
+}
+
+.panel-logo img {
+  width:50px;
+  height:50px;
+}
+
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub,.ant-layout-sider-children , .ant-menu.ant-menu-dark .ant-menu-sub {
+  background: #51BAA9 !important;
+}
+
+.ant-layout-sider-trigger , .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #20A5C4 !important;
+}
+
+#components-layout-demo-side .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.title-list-name {
+  cursor: pointer;
+  color:#1890ff;
+}
+
+.list-image-banner {
+  text-align: center;
+}
+
+.list-image-banner img , .ant-descriptions img {
+  cursor: pointer;
+}
+
+.list-image-banner .ant-btn-primary {
+  margin-top:10px;
+}
+
+.ant-alert-warning{
+  margin-bottom: 20px !important;
+}
+
+
+
+/* Style For Loader */
+
+.main-loader {
+  top: 0;
+  bottom: 0;
+  right:0;
+  left: 0;
+  z-index: 99999;
+  background:rgba(0, 0, 0, 0.8);
+  width: 100%;
+  position: fixed;
+}
+
+
+.loader {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px; 
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #EFEFFA;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #EFEFFA;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #EFEFFA;
+}
+
+
+/* Style For Detail Ads */
+.ProductDetailsDescribeDiv {
+  min-width:220px;
+  height: 40px;
+  border:1px solid #b9b4b4;
+  font-size: 12px;
+}
+
+.ProductDetailsDescribeLabel {
+  float: right;
+  height: 100%;
+  padding: 9px;
+  background: #e0e0e0;
+  min-width: 100px;
+}
+
+.ProductDetailsDescribecontent {
+  float: left;
+  height: 100%;
+  padding: 9px;
+  text-align: right;
+}
+
+.row-for-image-in-detail {
+  width:100%;
+
+  padding: 10px;
+}
+
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+
+/* استایل برای دکمه های انتخاب کتگوری افزودن آگهی */
+.button-cat-section {
+  padding: 10px;
+ 
+}
+
+.group-button {
+  text-align: center;
+  width: 500px;
+  margin:0 auto;
+  padding: 10px;
+  box-shadow: 0 0 1rem 0 rgba(0,0,0,.2);
+}
+
+.group-button button {
+  width:96%;
+  margin:10px;
+}
+
+.ant-form-item-label {
+  text-align: right !important;
+}
+
+#profit .ant-select , #profit .ant-input-number{
+  width: 100% !important;
+}
+
+.show-percent {
+  width: 400px;
+  height: 120px;
+  border:1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-percent-row {
+  height: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.show-percent-row:nth-child(1) {
+  padding-top:7px ;
+}
+
+.show-percent-row:nth-child(1) h4 {
+  margin: 0 auto;
+}
+
+.show-percent-row:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+}
+
+.show-percent-row-col {
+  width: 50%;
+  text-align: center;
+  padding-top: 7px;
+}
+
+.show-percent-row-col:nth-child(1){
+  border-left: 1px solid #e0e0e0;
+}
+
+/* Style For @media */
+
+@media only screen and (max-width: 800px) {
+  .group-button {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 740px) {
+  .login-form {
+    margin-left:30%;
+  }
+}
+
+
+@media only screen and (max-width: 550px) {
+  .login-form {
+    margin-left:23%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .login-form {
+    margin-left:70px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .login-form {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
