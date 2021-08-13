@@ -18,7 +18,19 @@ import ShopPharmacyStep from '../widget/FormStep/ShopPharmacyStep';
 
 // Import Form Add Ads
 
-import MeTechnicalAssistantForm from '../widget/FormStep/AddForm/MeTechnicalAssistantForm';
+import Pharmaceutical_kala_Form from '../widget/FormStep/AddForm/Pharmaceutical_kala_Form';
+import Pharmaceutical_Medicine_Form from '../widget/FormStep/AddForm/Pharmaceutical_Medicine_Form';
+import Technical_Assistant_Form from '../widget/FormStep/AddForm/Technical_Assistant_Form';
+import Pharmaceutical_Technician_Form from '../widget/FormStep/AddForm/Pharmaceutical_Technician_Form';
+import Internship_Form from '../widget/FormStep/AddForm/Internship_Form';
+import Physician_Secretary_Form from '../widget/FormStep/AddForm/Physician_Secretary_Form';
+import Seller_Form from '../widget/FormStep/AddForm/Seller_Form';
+import Rec_Technical_Assistant_Form from '../widget/FormStep/AddForm/Rec_Technical_Assistant_Form';
+import Rec_Pharmaceutical_Technician_Form from '../widget/FormStep/AddForm/Rec_Pharmaceutical_Technician_Form';
+import Rec_Internship_Form from '../widget/FormStep/AddForm/Rec_Internship_Form';
+import Rec_Physician_Secretary_Form from '../widget/FormStep/AddForm/Rec_Physician_Secretary_Form';
+import Rec_Seller_Form from '../widget/FormStep/AddForm/Rec_Seller_Form';
+import Private_Assignment_Form from '../widget/FormStep/AddForm/Private_Assignment_Form';
 
 class AddAdvertising extends React.Component {
 
@@ -46,27 +58,27 @@ class AddAdvertising extends React.Component {
 
 
         {/* Form Componrnt For pharmaceutical_needs دارو - کالایاب */}
-        {this.props.Displaystep === 'pharmaceutical_kala' ? <span>فرم کالا</span>: null}
-        {this.props.Displaystep === 'pharmaceutical_medicine' ? <span>فرم دارو</span>: null}
+        {this.props.Displaystep === 'pharmaceutical_kala' ? <Pharmaceutical_kala_Form/>: null}
+        {this.props.Displaystep === 'pharmaceutical_medicine' ? <Pharmaceutical_Medicine_Form/>: null}
 
         {/* Form Componrnt For job_search  کاریابی */}
-        {this.props.Displaystep === 'technical_assistant' ? <span>فرم کاریابی مسئول فنی</span>: null}
-        {this.props.Displaystep === 'pharmaceutical_technician' ? <span>فرم کاریابی تکنسین دارویی</span>: null}
-        {this.props.Displaystep === 'internship' ? <span>فرم کاریابی کارآموز</span>: null}
-        {this.props.Displaystep === 'physician_secretary' ? <span>فرم کاریابی منشی پزشک</span>: null}
-        {this.props.Displaystep === 'seller' ? <span>فرم کاریابی فروشنده</span>: null}
+        {this.props.Displaystep === 'technical_assistant' ? <Technical_Assistant_Form/>: null}
+        {this.props.Displaystep === 'pharmaceutical_technician' ? <Pharmaceutical_Technician_Form/>: null}
+        {this.props.Displaystep === 'internship' ? <Internship_Form/>: null}
+        {this.props.Displaystep === 'physician_secretary' ? <Physician_Secretary_Form/>: null}
+        {this.props.Displaystep === 'seller' ? <Seller_Form/>: null}
 
 
         {/* Form Componrnt For recruitment  استخدام */}
-        {this.props.Displaystep === 'rec_technical_assistant' ? <span>فرم استخدام مسئول فنی</span>: null}
-        {this.props.Displaystep === 'rec_pharmaceutical_technician' ? <span>فرم استخدام تکنسین دارویی</span>: null}
-        {this.props.Displaystep === 'rec_internship' ? <span>فرم استخدام کارآموز</span>: null}
-        {this.props.Displaystep === 'rec_physician_secretary' ? <span>فرم استخدام منشی پزشک</span>: null}
-        {this.props.Displaystep === 'rec_seller' ? <span>فرم استخدام فروشنده</span>: null}
+        {this.props.Displaystep === 'rec_technical_assistant' ? <Rec_Technical_Assistant_Form/>: null}
+        {this.props.Displaystep === 'rec_pharmaceutical_technician' ? <Rec_Pharmaceutical_Technician_Form/>: null}
+        {this.props.Displaystep === 'rec_internship' ? <Rec_Internship_Form/>: null}
+        {this.props.Displaystep === 'rec_physician_secretary' ? <Rec_Physician_Secretary_Form/>: null}
+        {this.props.Displaystep === 'rec_seller' ? <Rec_Seller_Form/>: null}
 
 
         {/* Form Componrnt For assignment_pharmacy  واگذاری داروخانه */}
-        {this.props.Displaystep === 'private_assignment' ? <span>فرم واگذاری خصوصی</span>: null}
+        {this.props.Displaystep === 'private_assignment' ? <Private_Assignment_Form/>: null}
         {this.props.Displaystep === 'government_assignment' ? <span>فرم واگذاری دولتی</span>: null}
         {this.props.Displaystep === 'private_applicant' ? <span>فرم  متقاضی خصوصی</span>: null}
 

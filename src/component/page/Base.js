@@ -18,6 +18,7 @@ import AddAdvertising from './AddAdvertising';
 import PaymentList from './PaymentList';
 import OrderList from './OrderList';
 import ProfitCalculation from './ProfitCalculation';
+import AdminAdvertisingList from './AdminAdvertisingList';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -53,7 +54,10 @@ class Base extends React.Component {
               <Link to="/panel/advertisinglist"> مدیریت آگهی</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
-              <Link to="/panel/shoplist"> مدیریت آگهی های فروشگاه</Link>
+              <Link to="/panel/shoplist">آگهی های فروشگاه</Link>
+            </Menu.Item>
+            <Menu.Item key="11" icon={<DesktopOutlined />}>
+              <Link to="/panel/adminadvertisinglist"> آگهی ادمین</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
               <Link to="/panel/userlist"> مدیریت کاربران</Link>
@@ -86,6 +90,7 @@ class Base extends React.Component {
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
               {this.props.children}
               <PrivateRoute exact path='/panel/advertisinglist' component={AdvertisingList} />
+              <PrivateRoute exact path='/panel/adminadvertisinglist' component={AdminAdvertisingList} />
               <PrivateRoute exact path='/panel/userlist' component={UserList} />
               <PrivateRoute exact path='/panel/shoplist' component={ShopList} />
               <PrivateRoute exact path='/panel/upload' component={UploadBaner} />
