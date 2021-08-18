@@ -32,6 +32,12 @@ import Rec_Physician_Secretary_Form from '../widget/FormStep/AddForm/Rec_Physici
 import Rec_Seller_Form from '../widget/FormStep/AddForm/Rec_Seller_Form';
 import Private_Assignment_Form from '../widget/FormStep/AddForm/Private_Assignment_Form';
 
+import Shop_Cosmetic_Form from '../widget/FormStep/AddForm/Shop_Cosmetic_Form';
+import Shop_Health_Form from '../widget/FormStep/AddForm/Shop_Health_Form';
+import Shop_Perfume_Form from '../widget/FormStep/AddForm/Shop_Perfume_Form';
+import Shop_Pharmacy_Medical_Equipment_Form from '../widget/FormStep/AddForm/Shop_Cosmetic_Form';
+import Shop_Complement_Form from '../widget/FormStep/AddForm/Shop_Complement_Form';
+
 class AddAdvertising extends React.Component {
 
 
@@ -41,8 +47,8 @@ class AddAdvertising extends React.Component {
       <div className="button-cat-section">
           {this.props.Displaystep === 'first' ? 
             <div className="group-button">
-              <Button onClick={()=>{this.props.StepState('shopstep')}}>فروشگاه / ثبت نام</Button>
-              <Button onClick={()=>{this.props.StepState('mestep')}}>من / ثبت آگهی</Button>
+              <Button onClick={()=>{this.props.StepState('shopstep')}}>فروشگاه </Button>
+              {/* <Button onClick={()=>{this.props.StepState('mestep')}}>من / ثبت آگهی</Button> */}
             </div>
           : null}
           {this.props.Displaystep === 'shopstep' ? <ShopStep/>: null}
@@ -93,11 +99,11 @@ class AddAdvertising extends React.Component {
 
 
         {/* Form Componrnt For shop_pharmacy   فروشگاه داروخانه */}
-        {this.props.Displaystep === 'shop_cosmetic' ? <span>فرم  آرایشی</span>: null}
-        {this.props.Displaystep === 'shop_health' ? <span>فرم  بهداشتی</span>: null}
-        {this.props.Displaystep === 'shop_perfume' ? <span>فرم  عطر و ادکلن</span>: null}
-        {this.props.Displaystep === 'shop_pharmacy_medical_equipment' ? <span>فرم  لوازم پزشکی</span>: null}
-        {this.props.Displaystep === 'shop_complement' ? <span>فرم  مکمل</span>: null}
+        {this.props.Displaystep === 'shop_cosmetic' ? <Shop_Cosmetic_Form/>: null}
+        {this.props.Displaystep === 'shop_health' ? <Shop_Health_Form/>: null}
+        {this.props.Displaystep === 'shop_perfume' ? <Shop_Perfume_Form/>: null}
+        {this.props.Displaystep === 'shop_pharmacy_medical_equipment' ? <Shop_Pharmacy_Medical_Equipment_Form/>: null}
+        {this.props.Displaystep === 'shop_complement' ? <Shop_Complement_Form/>: null}
 
 
 
