@@ -97,7 +97,7 @@ class Base extends React.Component {
               <PrivateRoute exact path='/panel/paymentlist' component={PaymentList} />
               <PrivateRoute exact path='/panel/orderlist' component={OrderList} />
               <PrivateRoute exact path='/panel/profitcalculation' component={ProfitCalculation} />
-              <Route exact path='/panel/addads' component={AddAdvertising} />
+              <PrivateRoute exact path='/panel/addads' component={AddAdvertising} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>TPSB</Footer>

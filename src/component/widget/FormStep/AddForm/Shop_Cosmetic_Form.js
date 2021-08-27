@@ -88,9 +88,9 @@ class Shop_Cosmetic_Form extends React.Component {
       "license": "",
       "shift": "",
       "description": values.description,
-      "name": values.name,
-      "mobile": values.phone,
-      "address": values.address,
+      "name": "",
+      "mobile": "",
+      "address": "",
       "lat": "",
       "lng": "",
       "experience_time": "",
@@ -630,26 +630,6 @@ class Shop_Cosmetic_Form extends React.Component {
               ]}
           >
               <InputNumber style={{display:"block",width:"16rem"}} />
-          </Form.Item>
-
-          <Form.Item
-              name="name"
-              label="نام و نام خانوادگی"
-              rules={[{required: true}]}
-          >
-              <Input/>
-          </Form.Item>
-
-          <Form.Item
-              name="phone"
-              label={"شماره تلفن همراه"}
-              disable
-          >
-              <InputNumber placeholder={"شماره همراه"} style={{width: '100%'}}/>
-          </Form.Item>
-
-          <Form.Item name="address" label="آدرس" rules={[{required: true, message: 'آدرس را وارد کنید'}]}>
-              <Input.TextArea placeholder="آردس را وارد کنید" autoSize={{minRows: 3}}/>
           </Form.Item>
 
           <Form.Item name="image" label="بارگذاری عکس">

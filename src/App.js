@@ -14,7 +14,7 @@ function App() {
     <ConfigProvider direction="rtl">
       <Router>
         <Route exact path='/' component={Login} />
-        <Route  path='/panel' component={Base} />
+        <PrivateRoute  path='/panel' component={Base} />
       </Router>  
     </ConfigProvider>
   );
