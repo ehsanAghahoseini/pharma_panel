@@ -11,7 +11,7 @@ import BASE_URL from '../../BASE_URL';
 import Filter from '../widget/Filter';
 
 
-class ShopList extends React.Component {
+class NewShopList extends React.Component {
 
     state = {
       visible: false,
@@ -47,7 +47,7 @@ class ShopList extends React.Component {
         this.setState({ display:false })
           alert("عدم برقراری ارتباط با سرور")
       },
-  });
+    });
   }
 
   // this function show modal for delete
@@ -165,7 +165,7 @@ class ShopList extends React.Component {
         render: row => (<Switch key={row.id} checkedChildren="فعال" unCheckedChildren="غیر فعال"   onChange={() => this.onChangeSwitch(row.id)} autoFocus={true}  />)
       },
       {
-        title: 'حذف فروشگاه',
+        title: 'حذف آگهی فروشگاه',
         render: row => <DeleteOutlined onClick={() => this.showModaldelete(row.id , row.title)} />,
       },
     ];
@@ -262,4 +262,4 @@ class ShopList extends React.Component {
   }
 }
 
-export default ShopList;
+export default NewShopList;

@@ -166,9 +166,6 @@ class UploadBaner extends React.Component {
 
 
   render() {
-
-
-
     return (
       <>
         {this.state.display ? <Loader/> : null}

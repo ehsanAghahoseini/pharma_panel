@@ -165,15 +165,22 @@ class UserList extends React.Component {
         <div>
           <Descriptions
             bordered
-            column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+            // column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
           >
+            <Descriptions.Item label="نام کاربری" span={2}>{this.state.detail_data.username}</Descriptions.Item>
+            <Descriptions.Item label="رمز عبور" span={2}>{this.state.detail_data.password}</Descriptions.Item>
+            <Descriptions.Item label="نام و نام خانوادگی" span={2}>{this.state.detail_data.name}</Descriptions.Item>
+            <Descriptions.Item label="تلفن" span={2}>{this.state.detail_data.phone}</Descriptions.Item>
+            <Descriptions.Item label="ایمیل" span={2}>{this.state.detail_data.mail}</Descriptions.Item>
+            <Descriptions.Item label="نام مکان" span={2}>{this.state.detail_data.place_name}</Descriptions.Item>
+            <Descriptions.Item label="آدرس" span={2}>{this.state.detail_data.address}</Descriptions.Item>
             <Descriptions.Item label="استان" span={2}>{this.state.detail_data.province_name}</Descriptions.Item>
             <Descriptions.Item label="شهر" span={2}>{this.state.detail_data.city_name}</Descriptions.Item>
             <Descriptions.Item label="تایید sms" span={2}>{this.state.detail_data.verify_sms === "true" ? <span>تایید شده</span> : <span>تایید نشده</span>}</Descriptions.Item>
             <Descriptions.Item label="توضیحات" span={3}>{this.state.detail_data.description}</Descriptions.Item>
             <Descriptions.Item label="تصویر" span={3}>{this.state.detail_data.image_url ? 
               <div className="row-for-image-in-detail">
-                <p>تصویر آگهی :</p>
+                <p>تصویر  :</p>
               <Image
                 width={200}
                 src={this.state.detail_data.image_url}

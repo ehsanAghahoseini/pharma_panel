@@ -12,13 +12,16 @@ import { Table, Tag, Space } from 'antd';
 import AdvertisingList from './AdvertisingList';
 import { BrowserRouter as Router, Route , Link} from 'react-router-dom';
 import UserList from './UserList';
-import ShopList from './ShopList';
+import NewShopList from './NewShopList';
 import UploadBaner from './UploadBaner';
 import AddAdvertising from './AddAdvertising';
 import PaymentList from './PaymentList';
 import OrderList from './OrderList';
 import ProfitCalculation from './ProfitCalculation';
 import AdminAdvertisingList from './AdminAdvertisingList';
+import ListShop from './ListShop';
+import AllAds from './AllAds';
+import TopShop from './TopShop';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -51,10 +54,19 @@ class Base extends React.Component {
           </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<DesktopOutlined />}>
-              <Link to="/panel/advertisinglist"> مدیریت آگهی</Link>
+              <Link to="/panel/advertisinglist">  آگهی های جدید</Link>
+            </Menu.Item>
+            <Menu.Item key="24" icon={<DesktopOutlined />}>
+              <Link to="/panel/allads">همه آگهی ها</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
-              <Link to="/panel/shoplist">آگهی های فروشگاه</Link>
+              <Link to="/panel/newshoplist">آگهی های فروشگاه</Link>
+            </Menu.Item>
+            <Menu.Item key="23" icon={<DesktopOutlined />}>
+              <Link to="/panel/listshop"> لیست فروشگاه ها</Link>
+            </Menu.Item>
+            <Menu.Item key="25" icon={<DesktopOutlined />}>
+              <Link to="/panel/topshop">فروشگاه برتر</Link>
             </Menu.Item>
             <Menu.Item key="11" icon={<DesktopOutlined />}>
               <Link to="/panel/adminadvertisinglist"> آگهی ادمین</Link>
@@ -89,10 +101,13 @@ class Base extends React.Component {
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
               {this.props.children}
+              <PrivateRoute exact path='/panel/allads' component={AllAds} />
               <PrivateRoute exact path='/panel/advertisinglist' component={AdvertisingList} />
               <PrivateRoute exact path='/panel/adminadvertisinglist' component={AdminAdvertisingList} />
               <PrivateRoute exact path='/panel/userlist' component={UserList} />
-              <PrivateRoute exact path='/panel/shoplist' component={ShopList} />
+              <PrivateRoute exact path='/panel/listshop' component={ListShop} />
+              <PrivateRoute exact path='/panel/topshop' component={TopShop} />
+              <PrivateRoute exact path='/panel/newshoplist' component={NewShopList} />
               <PrivateRoute exact path='/panel/upload' component={UploadBaner} />
               <PrivateRoute exact path='/panel/paymentlist' component={PaymentList} />
               <PrivateRoute exact path='/panel/orderlist' component={OrderList} />
