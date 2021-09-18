@@ -105,10 +105,12 @@ class UploadBaner extends React.Component {
     // send image to server for save
     sendimage = () => {
       this.setState({display:true});
+      let linkBn = document.getElementById('linkBaner').value ;
       const postdata = {
         "username":localStorage.getItem('username'),
         "password":localStorage.getItem('password'),
         "banner_id": 1,
+        "link": linkBn
         }  
       var fd = new FormData();  
       fd.append( 'data', JSON.stringify(postdata) );
@@ -200,6 +202,7 @@ class UploadBaner extends React.Component {
                     >
                     {this.state.fileList.length < 1 && '+ Upload'}
                   </Upload>
+                  <input type="text" id="linkBaner" placeholder="آدرس لینک"></input>
                 {/* </ImgCrop> */}
                 {this.state.fileList.length != 0 ? 
                 <Button onClick={this.sendimage} type="primary">بارگذاری عکس</Button>

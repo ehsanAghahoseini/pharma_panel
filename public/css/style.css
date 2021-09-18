@@ -103,6 +103,14 @@ body {
   color:#1890ff;
 }
 
+#linkBaner {
+  height: 35px;
+  min-width: 200px;
+  border:1px solid #e0e0e0;
+  padding-right: 7px;
+  margin-left: 10px;
+}
+
 .list-image-banner {
   text-align: center;
 }
