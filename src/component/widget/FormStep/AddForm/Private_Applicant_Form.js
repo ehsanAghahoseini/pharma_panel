@@ -15,8 +15,7 @@ import BASE_URL from '../../../../BASE_URL';
 import { Redirect } from 'react-router-dom';
 
 
-
-class Pharmaceutical_kala_Form extends React.Component {
+class Private_Applicant_Form extends React.Component {
 
   state = {
     display : false ,
@@ -140,11 +139,11 @@ class Pharmaceutical_kala_Form extends React.Component {
       "username": localStorage.getItem('username'),
       "password": localStorage.getItem('password'),
       "ad_id": this.props.data.id,
-      "type": "needs_product",
+      "type": "pharmacy_private_applicant",
       "type2": "",
       "type3": "",
       "type4": "",
-      "title": "دارو/کالا یاب",
+      "title": "داروخانه خصوصی متقاضی",
       "province_id": this.props.data.province_id,
       "city_id": this.props.data.city_id,
       "demand": "",
@@ -152,21 +151,21 @@ class Pharmaceutical_kala_Form extends React.Component {
       "shift": "",
       "description": values.description,
       "name": values.name,
-      "mobile": this.props.data.user_id,
+      "mobile":  this.props.data.user_id,
       "address": values.address,
       "lat": this.state.markers[0],
       "lng": this.state.markers[1],
-      "experience_time": "",
+      "experience_time":"",
       "document": "",
-      "place_name": "",
-      "work_type": "",
-      "raw_points_amount": "",
-      "earned_points_amount": "",
-      "daily_sales_amount": "",
-      "insurance_amount": "",
+      "place_name": values.place_name,
+      "work_type": values.work_type,
+      "raw_points_amount": values.raw_points_amount,
+      "earned_points_amount":  "",
+      "daily_sales_amount":  values.daily_sales_amount,
+      "insurance_amount":"",
       "rent_amount": "",
       "documents_last_time": "",
-      "tender_deposit": "",
+      "tender_deposit":"",
       "result_time": "",
       "pharmacy_experience": "",
       "mortgage_offer": "",
@@ -186,8 +185,8 @@ class Pharmaceutical_kala_Form extends React.Component {
       "clinic_experience": "",
       "floor_number": "",
       "prescription": "",
-      "product_name": values.product_name,
-      "urgent_need": values.urgent_need,
+      "product_name": "",
+      "urgent_need": "",
       "place_type": "",
       "phone": "",
       "brand": "",
@@ -235,7 +234,6 @@ class Pharmaceutical_kala_Form extends React.Component {
       },
     });
   }
-
 
   formRef = React.createRef();
 
@@ -296,7 +294,7 @@ class Pharmaceutical_kala_Form extends React.Component {
           >
              {this.state.textModal}
         </Modal>
-        {/* <Button danger onClick={()=>{this.props.StepState('pharmaceutical_needs')}}>بازگشت</Button> */}
+        {/* <Button danger onClick={()=>{this.props.StepState('assignment_pharmacy')}}>بازگشت</Button> */}
         <Form {...formItemLayout} ref={this.formRef} name="form" onFinish={this.onFinish} >
           {/* <Form.Item
             name="province"
@@ -346,24 +344,42 @@ class Pharmaceutical_kala_Form extends React.Component {
           </Form.Item> */}
 
           <Form.Item
-              name="product_name"
-              label="نام کالا موردنظر"
-              rules={[{ required: true }]}
+              name="work_type"
+              label="انتخاب بازه زمان"
+              rules={[
+                  { required: true,}]} >
+              <Select
+                  showSearch
+                  placeholder="روزانه/پاره وقت/شبانه روزی"
+                  optionFilterProp="children"
+              >
+                  <Option value="daily">روزانه</Option>
+                  <Option value="partly">پاره وقت</Option>
+                  <Option value="hostelry">شبانه روزی</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="place_name"
+              label="نام محل"
           >
               <Input/>
           </Form.Item>
 
           <Form.Item
-              name="urgent_need"
-              label="نیازمندی فوری"
-              >
-              <Select
-                  placeholder="نیازمندی فوری"
-                  optionFilterProp="children"
-              >
-                  <Option value="true">دارد</Option>
-                  <Option value="false">ندارد</Option>
-              </Select>
+              name="raw_points_amount"
+              label="امتیاز خام/کارکرده"
+              rules={[{required: true, message: 'امتیاز را وارد کنید'}]}
+          >
+              <InputNumber style={{display: "block", width: "16rem"}} />
+          </Form.Item>
+
+          <Form.Item
+              name="daily_sales_amount"
+              label="مبلغ فروش روزانه"
+              rules={[{required: true, message: 'مبلغ را وارد کنید'}]}
+          >
+              <InputNumber style={{display: "block", width: "16rem"}} />
           </Form.Item>
 
           <Form.Item
@@ -435,4 +451,4 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {StepState};
 
-export default connect(mapStateToProps , mapDispatchToProps)(Pharmaceutical_kala_Form);
+export default connect(mapStateToProps , mapDispatchToProps)(Private_Applicant_Form);

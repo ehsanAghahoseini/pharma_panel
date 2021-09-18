@@ -28,8 +28,8 @@ class ListShop extends React.Component {
       type: 'post',
       dataType: 'json',
       data: JSON.stringify({
-        "username":'09135083446',
-        "password":'123456',
+        "username":localStorage.getItem('username'),
+        "password":localStorage.getItem('password'),
         "user_id": id,
       }),
       success: (res) =>  {
@@ -103,7 +103,7 @@ class ListShop extends React.Component {
       },
       {
         title: 'مشاهده آگهی',
-        render: (text , row) =>  <Link target="_blank" to={`https://agahipharma.com/home/shopsADS`}  >مشاهده</Link>,
+        render: (text , row) =>  <a target="_blank" href={`https://agahipharma.com/post/${row.id}`}  >مشاهده</a>,
       },
     ];
 

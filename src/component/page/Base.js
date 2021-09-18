@@ -22,6 +22,7 @@ import AdminAdvertisingList from './AdminAdvertisingList';
 import ListShop from './ListShop';
 import AllAds from './AllAds';
 import TopShop from './TopShop';
+import EditAds from './EditAds';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -102,6 +103,8 @@ class Base extends React.Component {
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
               {this.props.children}
               <PrivateRoute exact path='/panel/allads' component={AllAds} />
+              <PrivateRoute exact path='/panel/edit/:id' component={EditAds} />
+
               <PrivateRoute exact path='/panel/advertisinglist' component={AdvertisingList} />
               <PrivateRoute exact path='/panel/adminadvertisinglist' component={AdminAdvertisingList} />
               <PrivateRoute exact path='/panel/userlist' component={UserList} />

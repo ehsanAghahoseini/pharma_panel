@@ -31,6 +31,12 @@ import Rec_Internship_Form from '../widget/FormStep/AddForm/Rec_Internship_Form'
 import Rec_Physician_Secretary_Form from '../widget/FormStep/AddForm/Rec_Physician_Secretary_Form';
 import Rec_Seller_Form from '../widget/FormStep/AddForm/Rec_Seller_Form';
 import Private_Assignment_Form from '../widget/FormStep/AddForm/Private_Assignment_Form';
+import Government_Assignment_Form from '../widget/FormStep/AddForm/Government_Assignment_Form';
+import Therapeutic_Office_Form from '../widget/FormStep/AddForm/Therapeutic_Office_Form';
+import Pharmacy_Trainee_Form from '../widget/FormStep/AddForm/Pharmacy_Trainee_Form';
+import Private_Applicant_Form from '../widget/FormStep/AddForm/Private_Applicant_Form';
+import Therapeutic_Pharmacy_Form from '../widget/FormStep/AddForm/Therapeutic_Pharmacy_Form';
+
 
 import Shop_Cosmetic_Form from '../widget/FormStep/AddForm/Shop_Cosmetic_Form';
 import Shop_Health_Form from '../widget/FormStep/AddForm/Shop_Health_Form';
@@ -85,17 +91,17 @@ class AddAdvertising extends React.Component {
 
         {/* Form Componrnt For assignment_pharmacy  واگذاری داروخانه */}
         {this.props.Displaystep === 'private_assignment' ? <Private_Assignment_Form/>: null}
-        {this.props.Displaystep === 'government_assignment' ? <span>فرم واگذاری دولتی</span>: null}
-        {this.props.Displaystep === 'private_applicant' ? <span>فرم  متقاضی خصوصی</span>: null}
+        {this.props.Displaystep === 'government_assignment' ? <Government_Assignment_Form/>: null}
+        {this.props.Displaystep === 'private_applicant' ? <Private_Applicant_Form/>: null}
 
 
         {/* Form Componrnt For therapeutic_real_estate  املاک درمانی */}
-        {this.props.Displaystep === 'therapeutic_pharmacy' ? <span>فرم  املاک درمانی داروخانه</span>: null}
-        {this.props.Displaystep === 'therapeutic_office' ? <span>فرم  املاک درمانی مطب</span>: null}
+        {this.props.Displaystep === 'therapeutic_pharmacy' ? <Therapeutic_Pharmacy_Form/>: null}
+        {this.props.Displaystep === 'therapeutic_office' ? <Therapeutic_Office_Form/>: null}
 
 
         {/* Form Componrnt For education   آموزش */}
-        {this.props.Displaystep === 'pharmacy_trainee' ? <span>فرم کارآموزش داروخانه</span>: null}
+        {this.props.Displaystep === 'pharmacy_trainee' ? <Pharmacy_Trainee_Form/>: null}
 
 
         {/* Form Componrnt For shop_pharmacy   فروشگاه داروخانه */}

@@ -15,8 +15,7 @@ import BASE_URL from '../../../../BASE_URL';
 import { Redirect } from 'react-router-dom';
 
 
-
-class Pharmaceutical_kala_Form extends React.Component {
+class Therapeutic_Office_Form extends React.Component {
 
   state = {
     display : false ,
@@ -140,11 +139,11 @@ class Pharmaceutical_kala_Form extends React.Component {
       "username": localStorage.getItem('username'),
       "password": localStorage.getItem('password'),
       "ad_id": this.props.data.id,
-      "type": "needs_product",
+      "type": "treatment_estates_clinic",
       "type2": "",
       "type3": "",
       "type4": "",
-      "title": "دارو/کالا یاب",
+      "title": "املاک درمانی مطب",
       "province_id": this.props.data.province_id,
       "city_id": this.props.data.city_id,
       "demand": "",
@@ -156,38 +155,38 @@ class Pharmaceutical_kala_Form extends React.Component {
       "address": values.address,
       "lat": this.state.markers[0],
       "lng": this.state.markers[1],
-      "experience_time": "",
+      "experience_time":"",
       "document": "",
-      "place_name": "",
+      "place_name": values.place_name,
       "work_type": "",
       "raw_points_amount": "",
-      "earned_points_amount": "",
-      "daily_sales_amount": "",
-      "insurance_amount": "",
+      "earned_points_amount":  "",
+      "daily_sales_amount":  "",
+      "insurance_amount":"",
       "rent_amount": "",
       "documents_last_time": "",
-      "tender_deposit": "",
+      "tender_deposit":"",
       "result_time": "",
-      "pharmacy_experience": "",
-      "mortgage_offer": "",
-      "rent_offer": "",
-      "storage": "",
-      "width": "",
-      "length": "",
-      "street": "",
-      "corner": "",
-      "water": "",
-      "power": "",
-      "phone_line": "",
-      "internet": "",
-      "gas": "",
-      "stair": "",
-      "elevator": "",
+      "pharmacy_experience":values.pharmacy_experience,
+      "mortgage_offer":values.mortgage_offer,
+      "rent_offer":values.rent_offer,
+      "storage":  values.storage,
+      "width": values.width,
+      "length": values.length,
+      "street": values.street,
+      "corner":values.corner,
+      "water": values.water,
+      "power": values.power,
+      "phone_line": values.phone_line,
+      "internet": values.internet,
+      "gas": values.gas,
+      "stair": values.stair,
+      "elevator": values.elevator,
       "clinic_experience": "",
       "floor_number": "",
       "prescription": "",
-      "product_name": values.product_name,
-      "urgent_need": values.urgent_need,
+      "product_name": "",
+      "urgent_need": "",
       "place_type": "",
       "phone": "",
       "brand": "",
@@ -205,60 +204,59 @@ class Pharmaceutical_kala_Form extends React.Component {
       fd.append("file",this.state.fileList[i].originFileObj );
     }
     $.ajax({
-      url: BASE_URL + '/edit_ad.php',
-      type: 'post',
-      dataType: 'json',
-      data: fd,
-      enctype: 'multipart/form-data',
-      processData: false,
-      contentType: false,
-      success: (res) =>  {
-          if (res.result == "ok") {
-            this.setState({
-              display:false ,
-              visible : true ,
-              textModal : "باموفقیت ویرایش گردید" ,
-              redirect : true ,
-            });
-          }
-          else {
-            this.setState({
-              display:false ,
-              visible : true ,
-              textModal : "یک خطای غیر منتظره رخ داده است"
-            });
-          }
-      },
-      error:  () => {
-        this.setState({ display:false })
-        alert("عدم برقراری ارتباط با سرور")
-      },
-    });
-  }
-
-
-  formRef = React.createRef();
-
-  componentDidMount() {
-    // this.setState({display:true});
-    // this.getListProvinces() ;
-    this.formRef.current.setFieldsValue(this.props.data);
-    if(this.props.data.image_url != ""){
-      this.setState({
-        fileList : [{
-          uid: '-1',
-          name: this.props.data.image_url,
-          status: 'done',
-          url: this.props.data.image_url,
-      }]
-      })
+        url: BASE_URL + '/edit_ad.php',
+        type: 'post',
+        dataType: 'json',
+        data: fd,
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: (res) =>  {
+            if (res.result == "ok") {
+              this.setState({
+                display:false ,
+                visible : true ,
+                textModal : "باموفقیت ویرایش گردید" ,
+                redirect : true ,
+              });
+            }
+            else {
+              this.setState({
+                display:false ,
+                visible : true ,
+                textModal : "یک خطای غیر منتظره رخ داده است"
+              });
+            }
+        },
+        error:  () => {
+          this.setState({ display:false })
+          alert("عدم برقراری ارتباط با سرور")
+        },
+      });
     }
-    if(this.props.data.lat != undefined){
-      this.setState({
-        markers : [this.props.data.lat , this.props.data.lng]
-      })
+  
+    formRef = React.createRef();
+  
+    componentDidMount() {
+      // this.setState({display:true});
+      // this.getListProvinces() ;
+      this.formRef.current.setFieldsValue(this.props.data);
+      if(this.props.data.image_url != ""){
+        this.setState({
+          fileList : [{
+            uid: '-1',
+            name: this.props.data.image_url,
+            status: 'done',
+            url: this.props.data.image_url,
+        }]
+        })
+      }
+      if(this.props.data.lat != undefined){
+        this.setState({
+          markers : [this.props.data.lat , this.props.data.lng]
+        })
+      }
     }
-  }
 
   render() {
   const formItemLayout = {
@@ -296,7 +294,7 @@ class Pharmaceutical_kala_Form extends React.Component {
           >
              {this.state.textModal}
         </Modal>
-        {/* <Button danger onClick={()=>{this.props.StepState('pharmaceutical_needs')}}>بازگشت</Button> */}
+        {/* <Button danger onClick={()=>{this.props.StepState('therapeutic_real_estate')}}>بازگشت</Button> */}
         <Form {...formItemLayout} ref={this.formRef} name="form" onFinish={this.onFinish} >
           {/* <Form.Item
             name="province"
@@ -346,19 +344,206 @@ class Pharmaceutical_kala_Form extends React.Component {
           </Form.Item> */}
 
           <Form.Item
-              name="product_name"
-              label="نام کالا موردنظر"
-              rules={[{ required: true }]}
+              name="place_name"
+              label="نام محل"
           >
               <Input/>
           </Form.Item>
 
           <Form.Item
-              name="urgent_need"
-              label="نیازمندی فوری"
-              >
+              name="pharmacy_experience"
+              label="سابقه کاربری"
+          >
               <Select
-                  placeholder="نیازمندی فوری"
+                  showSearch
+                  placeholder="سابقه کاربری داروخانه دارد/ندارد"
+                  optionFilterProp="children"
+                  rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="mortgage_offer"
+              label="مبلغ رهن پیشنهادی"
+              rules={[{required: true, message: 'مبلغ را وارد کنید'}]}
+          >
+              <InputNumber style={{display:"block",width:"16rem"}} />
+          </Form.Item>
+
+          <Form.Item
+              name="rent_offer"
+              label="مبلغ اجاره پیشنهادی"
+              rules={[{required: true, message: 'مبلغ را وارد کنید'}]}
+          >
+              <InputNumber style={{display:"block",width:"16rem"}} />
+          </Form.Item>
+
+          <Form.Item
+              name="storage"
+              label="انتخاب انبار"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="انبار دارد/ندارد"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="length"
+              label="طول"
+              rules={[{required: true, message: 'طول مکان را وارد کنید'}]}
+              help={"واحد به متر"}
+          >
+              <InputNumber style={{display:"block",width:"16rem"}} />
+          </Form.Item>
+
+          <Form.Item
+              name="width"
+              label="عرض"
+              rules={[{required: true, message: 'عرض مکان را وارد کنید'}]}
+              help={"واحد به متر"}
+          >
+              <InputNumber style={{display:"block",width:"16rem"}} />
+          </Form.Item>
+
+          <Form.Item
+              name="corner"
+              label="انتخاب موقعیت"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="دو نبش/سه نبش"
+                  optionFilterProp="children"
+              >
+                  <Option value="zero">صفر</Option>
+                  <Option value="one">یک</Option>
+                  <Option value="two">دو</Option>
+                  <Option value="three">سه</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="street"
+              label="انتخاب خیابان"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="خیابان اصلی/فرعی"
+                  optionFilterProp="children"
+              >
+                  <Option value="main">اصلی</Option>
+                  <Option value="subsidiary">فرعی</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="water"
+              label="اشتراک آب"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="اشتراک آب دارد/ندارد"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="power"
+              label="اشتراک برق"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="اشتراک برق دارد/ندارد"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="gas"
+              label="اشتراک گاز"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="اشتراک گاز دارد/ندارد"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="phone_line"
+              label="اشتراک تلفن"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="اشتراک تلفن دارد/ندارد"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="stair"
+              label="انتخاب وجود پله"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="پله"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="elevator"
+              label="انتخاب وجود آسانسور"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="آسانسور"
+                  optionFilterProp="children"
+              >
+                  <Option value="true">دارد</Option>
+                  <Option value="false">ندارد</Option>
+              </Select>
+          </Form.Item>
+
+          <Form.Item
+              name="internet"
+              label="انتخاب اشتراک اینترنت"
+              rules={[{required: true, message: 'پر کردن این آیتم الزامیست'}]}
+          >
+              <Select
+                  showSearch
+                  placeholder="اینترنت"
                   optionFilterProp="children"
               >
                   <Option value="true">دارد</Option>
@@ -435,4 +620,4 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {StepState};
 
-export default connect(mapStateToProps , mapDispatchToProps)(Pharmaceutical_kala_Form);
+export default connect(mapStateToProps , mapDispatchToProps)(Therapeutic_Office_Form);

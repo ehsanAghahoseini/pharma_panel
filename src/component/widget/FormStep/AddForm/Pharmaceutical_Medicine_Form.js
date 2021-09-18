@@ -28,7 +28,6 @@ class Pharmaceutical_Medicine_Form extends React.Component {
     allCity : [],
     allProvinces : []
   }
-  formRef = React.createRef();
 
   getLocation=()=> {
     if (navigator.geolocation) {
@@ -125,8 +124,11 @@ class Pharmaceutical_Medicine_Form extends React.Component {
 
   onFinish=(values)=>{
     let imgCheck = "false" ;
-    if(this.state.fileList.length != 0){
+    if(this.state.fileList.length != 0 && this.state.fileList[0].name != this.props.data.image_url){
       imgCheck = "true" ;
+    }
+    if(this.state.fileList.length == 0 && this.props.data.image_url != null){
+      imgCheck = "delete" ;
     }
     for(let i in values){
       if(values[i] === undefined){
@@ -137,19 +139,20 @@ class Pharmaceutical_Medicine_Form extends React.Component {
     const postData = {
       "username": localStorage.getItem('username'),
       "password": localStorage.getItem('password'),
+      "ad_id": this.props.data.id,
       "type": "needs_medication",
       "type2": "",
       "type3": "",
       "type4": "",
       "title": "دارو/کالا یاب",
-      "province_id": values.province,
-      "city_id": values.city,
+      "province_id": this.props.data.province_id,
+      "city_id": this.props.data.city_id,
       "demand": "",
       "license": "",
       "shift": "",
       "description": values.description,
       "name": values.name,
-      "mobile": values.phone,
+      "mobile": this.props.data.user_id,
       "address": values.address,
       "lat": this.state.markers[0],
       "lng": this.state.markers[1],
@@ -183,7 +186,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
       "clinic_experience": "",
       "floor_number": "",
       "prescription": values.prescription,
-      "product_name": values.kala_name,
+      "product_name": values.product_name,
       "urgent_need": values.urgent_need,
       "place_type": "",
       "phone": "",
@@ -202,7 +205,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
       fd.append("file",this.state.fileList[i].originFileObj );
     }
     $.ajax({
-      url: BASE_URL + '/add_unique_ad.php',
+      url: BASE_URL + '/edit_ad.php',
       type: 'post',
       dataType: 'json',
       data: fd,
@@ -214,7 +217,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
             this.setState({
               display:false ,
               visible : true ,
-              textModal : "باموفقیت ثبت گردید" ,
+              textModal : "باموفقیت ویرایش گردید" ,
               redirect : true ,
             });
           }
@@ -226,18 +229,34 @@ class Pharmaceutical_Medicine_Form extends React.Component {
             });
           }
       },
-      error: function () {
+      error:  () => {
         this.setState({ display:false })
         alert("عدم برقراری ارتباط با سرور")
       },
     });
   }
 
+  formRef = React.createRef();
 
   componentDidMount() {
-    this.setState({display:true});
-    this.getListProvinces()
-
+    // this.setState({display:true});
+    // this.getListProvinces() ;
+    this.formRef.current.setFieldsValue(this.props.data);
+    if(this.props.data.image_url != ""){
+      this.setState({
+        fileList : [{
+          uid: '-1',
+          name: this.props.data.image_url,
+          status: 'done',
+          url: this.props.data.image_url,
+      }]
+      })
+    }
+    if(this.props.data.lat != undefined){
+      this.setState({
+        markers : [this.props.data.lat , this.props.data.lng]
+      })
+    }
   }
 
   render() {
@@ -266,7 +285,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
   const {Option} = Select;  
     return (
     <div className="group-button">
-        {this.state.redirect ? (<Redirect to='/panel/adminadvertisinglist' />) : null}
+        {this.state.redirect ? (<Redirect to='/panel/allads' />) : null}
         {this.state.display ? <Loader/> : null}
         <Modal
             title="پیام"
@@ -276,9 +295,9 @@ class Pharmaceutical_Medicine_Form extends React.Component {
           >
              {this.state.textModal}
         </Modal>
-        <Button danger onClick={()=>{this.props.StepState('pharmaceutical_needs')}}>بازگشت</Button>
-        <Form {...formItemLayout} ref={this.formRef} name="form" onFinish={this.onFinish} >
-          <Form.Item
+        {/* <Button danger onClick={()=>{this.props.StepState('pharmaceutical_needs')}}>بازگشت</Button> */}
+         <Form {...formItemLayout} ref={this.formRef} name="form" onFinish={this.onFinish} >
+          {/*<Form.Item
             name="province"
             label="انتخاب استان"
             rules={[
@@ -323,7 +342,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
                   <option value={item.id}>{item.name}</option>
                 )}  
               </Select>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
               name="prescription"
@@ -339,7 +358,7 @@ class Pharmaceutical_Medicine_Form extends React.Component {
           </Form.Item>
 
           <Form.Item
-              name="kala_name"
+              name="product_name"
               label="نام واحد دارو"
               rules={[{ required: true }]}
           >
@@ -367,13 +386,13 @@ class Pharmaceutical_Medicine_Form extends React.Component {
               <Input/>
           </Form.Item>
 
-          <Form.Item
-              name="phone"
+          {/* <Form.Item
+              name="mobile"
               label={"شماره تلفن همراه"}
               disable
           >
               <InputNumber placeholder={"شماره همراه"} style={{width: '100%'}}/>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item name="description" label="توضیحات" rules={[{required: true, message: 'توضیحات را وارد کنید'}]}>
               <Input.TextArea placeholder="توضیحات لازم را وارد کنید" autoSize={{minRows: 2}}/>

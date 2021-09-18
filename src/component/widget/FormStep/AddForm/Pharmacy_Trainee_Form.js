@@ -15,8 +15,7 @@ import BASE_URL from '../../../../BASE_URL';
 import { Redirect } from 'react-router-dom';
 
 
-
-class Pharmaceutical_kala_Form extends React.Component {
+class Pharmacy_Trainee_Form extends React.Component {
 
   state = {
     display : false ,
@@ -140,11 +139,11 @@ class Pharmaceutical_kala_Form extends React.Component {
       "username": localStorage.getItem('username'),
       "password": localStorage.getItem('password'),
       "ad_id": this.props.data.id,
-      "type": "needs_product",
+      "type": "education_intern",
       "type2": "",
       "type3": "",
       "type4": "",
-      "title": "دارو/کالا یاب",
+      "title": "کارآموز داروخانه (آموزش علمی)",
       "province_id": this.props.data.province_id,
       "city_id": this.props.data.city_id,
       "demand": "",
@@ -156,26 +155,26 @@ class Pharmaceutical_kala_Form extends React.Component {
       "address": values.address,
       "lat": this.state.markers[0],
       "lng": this.state.markers[1],
-      "experience_time": "",
-      "document": "",
+      "experience_time":"",
+      "document": values.document,
       "place_name": "",
       "work_type": "",
       "raw_points_amount": "",
-      "earned_points_amount": "",
-      "daily_sales_amount": "",
-      "insurance_amount": "",
+      "earned_points_amount":  "",
+      "daily_sales_amount":  "",
+      "insurance_amount":"",
       "rent_amount": "",
       "documents_last_time": "",
-      "tender_deposit": "",
+      "tender_deposit":"",
       "result_time": "",
-      "pharmacy_experience": "",
-      "mortgage_offer": "",
-      "rent_offer": "",
-      "storage": "",
+      "pharmacy_experience":"",
+      "mortgage_offer":"",
+      "rent_offer":"",
+      "storage":  "",
       "width": "",
       "length": "",
       "street": "",
-      "corner": "",
+      "corner":"",
       "water": "",
       "power": "",
       "phone_line": "",
@@ -186,8 +185,8 @@ class Pharmaceutical_kala_Form extends React.Component {
       "clinic_experience": "",
       "floor_number": "",
       "prescription": "",
-      "product_name": values.product_name,
-      "urgent_need": values.urgent_need,
+      "product_name": "",
+      "urgent_need": "",
       "place_type": "",
       "phone": "",
       "brand": "",
@@ -235,7 +234,6 @@ class Pharmaceutical_kala_Form extends React.Component {
       },
     });
   }
-
 
   formRef = React.createRef();
 
@@ -296,7 +294,7 @@ class Pharmaceutical_kala_Form extends React.Component {
           >
              {this.state.textModal}
         </Modal>
-        {/* <Button danger onClick={()=>{this.props.StepState('pharmaceutical_needs')}}>بازگشت</Button> */}
+        {/* <Button danger onClick={()=>{this.props.StepState('education')}}>بازگشت</Button> */}
         <Form {...formItemLayout} ref={this.formRef} name="form" onFinish={this.onFinish} >
           {/* <Form.Item
             name="province"
@@ -346,25 +344,20 @@ class Pharmaceutical_kala_Form extends React.Component {
           </Form.Item> */}
 
           <Form.Item
-              name="product_name"
-              label="نام کالا موردنظر"
-              rules={[{ required: true }]}
-          >
-              <Input/>
-          </Form.Item>
+            name="document"
+            label="مدرک"
+            rules={[{required: true, message: 'انتخاب کنید',},]} required={true}
+        >
+            <Select
+                showSearch
+                placeholder="مدرک دارم/ندارم"
+                optionFilterProp="children"
+            >
+                <Option value="true">دارم</Option>
+                <Option value="false">ندارم</Option>
+            </Select>
+        </Form.Item>
 
-          <Form.Item
-              name="urgent_need"
-              label="نیازمندی فوری"
-              >
-              <Select
-                  placeholder="نیازمندی فوری"
-                  optionFilterProp="children"
-              >
-                  <Option value="true">دارد</Option>
-                  <Option value="false">ندارد</Option>
-              </Select>
-          </Form.Item>
 
           <Form.Item
               name="name"
@@ -435,4 +428,4 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {StepState};
 
-export default connect(mapStateToProps , mapDispatchToProps)(Pharmaceutical_kala_Form);
+export default connect(mapStateToProps , mapDispatchToProps)(Pharmacy_Trainee_Form);
