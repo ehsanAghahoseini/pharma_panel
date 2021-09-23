@@ -103,7 +103,7 @@ class ListShop extends React.Component {
       },
       {
         title: 'مشاهده آگهی',
-        render: (text , row) =>  <a target="_blank" href={`https://agahipharma.com/post/${row.id}`}  >مشاهده</a>,
+        render: (text , row) =>  <a target="_blank" href={`https://agahipharma.com/post/${`${row.title} ${row.description.substring(0, 60)}`.split(' ').join('').split('/').join('')}/${row.id}`}  >مشاهده</a>,
       },
     ];
 

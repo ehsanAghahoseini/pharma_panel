@@ -60,15 +60,15 @@ class AllAds extends React.Component {
 
     nextPage=()=>{
       const range = this.state.range ;
-      this.setState({range:range + 1});
-      this.getAllAds(range+1);
+      this.setState({range:range + 60});
+      this.getAllAds(range+60);
     }
 
     beforePage=()=>{
       const range = this.state.range ;
-      if(range -1 >= 0){
-        this.setState({range:range - 1});
-        this.getAllAds(range-1);
+      if(range -60 >= 0){
+        this.setState({range:range - 60});
+        this.getAllAds(range-60);
       }
       else {
         alert('صفحه قبلی وجود ندارد')
@@ -90,7 +90,7 @@ class AllAds extends React.Component {
           "province_id": "-1",
           "city_id": "-1",
           "range": `${range}`,
-          "type": "needs"
+          "type": ""
         }),
         success: (res) =>  {
             if(res.result === "ok"){
@@ -133,7 +133,7 @@ class AllAds extends React.Component {
           <div className="cTable-row">
             <div className="cTable-row-item">{item.id}</div>
             <div className="cTable-row-item">{item.title}</div>
-            <div className="cTable-row-item"><a target="_blank" href={`https://agahipharma.com/post/${item.id}`}  >مشاهده</a></div>
+            <div className="cTable-row-item"><a target="_blank" href={`https://agahipharma.com/post/${`${item.title} ${item.description.substring(0, 60)}`.split(' ').join('').split('/').join('')}/${item.id}`}  >مشاهده</a></div>
             <div className="cTable-row-item"><Link to={`edit/${item.id}`}><EditOutlined/></Link></div>
             <div className="cTable-row-item"><DeleteOutlined onClick={()=>this.deleteAds(item.id)}/></div>
           </div>

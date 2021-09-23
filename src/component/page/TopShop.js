@@ -22,10 +22,6 @@ class TopShop extends React.Component {
 
 
     onFinish=(values)=>{
-      if(values.shops.length < 9){
-        alert('انتخاب 10 فروشگاه الزامی میباشد')
-      }
-      else {
         this.setState({display : true})
         $.ajax({
           url: 'https://newreza.ir/agahi_farma/php/admin/post_top_shops.php',
@@ -51,7 +47,6 @@ class TopShop extends React.Component {
               alert("عدم برقراری ارتباط با سرور")
           },
         });
-      }
     }
 
 
