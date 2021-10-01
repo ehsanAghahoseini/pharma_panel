@@ -41,6 +41,12 @@ class ListShop extends React.Component {
             });
             this.componentDidMount();
           }
+          else {
+            this.setState({
+              display:false ,
+            });
+            alert('داده ای یافت نشد')
+          }
       },
       error:  () => {
         this.setState({ display:false })
