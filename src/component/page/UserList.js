@@ -8,6 +8,8 @@ import { Modal, Button } from 'antd';
 import Loader from '../widget/Loader';
 import $ from 'jquery';
 import BASE_URL from '../../BASE_URL';
+import moment from "jalali-moment";
+
 
 class UserList extends React.Component {
 
@@ -126,7 +128,23 @@ class UserList extends React.Component {
         title: ' نام کاربر',
         dataIndex: 'name',
         key: 'name',
-        render: (text , row) =>  <span className="title-list-name" onClick={() => this.showModaldetail(row.username)}>{text}</span>,
+        render: (text , row) =>  <span className="title-list-name" onClick={() => this.showModaldetail(row.username)}>{`${text} - ${row.place_name != null ? row.place_name : ""}`}</span>,
+      },
+      {
+      title: 'VIP',
+      render: (text , row) =>  (row.is_vip == "true" ? <span>بله</span> : <span>خیر</span>),
+      },
+      {
+        title: 'زمان VIP',
+        render: (text , row) =>  (row.is_vip == "true" ? <span>{row.vip_method}</span> : <span>--</span>),
+      },
+      {
+        title: 'زمان شروع VIP',
+        render: (text , row) =>  (row.is_vip == "true" ? <span>{moment(new Date(JSON.parse(row.vip_start_time))).locale('fa').format("HH:mm:ss - YYYY/M/D")}</span> : <span>--</span>),
+      },
+      {
+        title: 'زمان پایان VIP',
+        render: (text , row) =>  (row.is_vip == "true" ? <span>{moment(new Date(JSON.parse(row.vip_end_time))).locale('fa').format("HH:mm:ss - YYYY/M/D")}</span> : <span>--</span>),
       },
       {
         title: 'فعالیت کاربر',

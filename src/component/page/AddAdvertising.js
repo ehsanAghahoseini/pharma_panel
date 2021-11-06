@@ -41,7 +41,7 @@ import Therapeutic_Pharmacy_Form from '../widget/FormStep/AddForm/Therapeutic_Ph
 import Shop_Cosmetic_Form from '../widget/FormStep/AddForm/Shop_Cosmetic_Form';
 import Shop_Health_Form from '../widget/FormStep/AddForm/Shop_Health_Form';
 import Shop_Perfume_Form from '../widget/FormStep/AddForm/Shop_Perfume_Form';
-import Shop_Pharmacy_Medical_Equipment_Form from '../widget/FormStep/AddForm/Shop_Cosmetic_Form';
+import Shop_Pharmacy_Medical_Equipment_Form from '../widget/FormStep/AddForm/Shop_Pharmacy_Medical_Equipment_Form';
 import Shop_Complement_Form from '../widget/FormStep/AddForm/Shop_Complement_Form';
 
 class AddAdvertising extends React.Component {
